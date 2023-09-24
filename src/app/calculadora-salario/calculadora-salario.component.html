@@ -6,11 +6,26 @@
     <mat-card-content>
         <p>Ingrese su salario y nosotros le devolveremos los descuentos que se realizarán</p>
         <form #loginForm="ngForm" class="example-form">
+
+            <mat-radio-group [(ngModel)]="tipoSalario">
+                <mat-label>Seleccione su tipo de salario</mat-label>
+                <mat-radio-button value="Semanal">Semanal</mat-radio-button>
+                <mat-radio-button value="Quincenal">Quincenal</mat-radio-button>
+                <mat-radio-button value="Mensual">Mensual</mat-radio-button>
+              </mat-radio-group>
+            <p></p>
             <mat-form-field class="example-full-width">
                 <mat-label>Ingrese su salario</mat-label>
-                <input matInput type="number" placeholder="348.55" id="salario" name="salario" [(ngModel)]="salario" required>
+                <input matInput type="number" placeholder="348.55" id="salario" name="salario" [(ngModel)]="salario" pattern="^\d+(\.\d{1,2})?$" required>
                 <mat-icon matSuffix>paid</mat-icon>
             </mat-form-field>
+
+            <span>
+                <!--para verificar con regex el input del usuario en la vista-->
+                <div *ngIf="salario > 0 && !isNumber()">
+                    Formato invalido, solamente dos decimales
+                </div>
+            </span>
             <section>
                 <div class="example-button-row">
                     <button color="primary" disabledRipple="false" id="calcular" mat-raised-button (click)="calcularDescuentos()">Calcular</button>
