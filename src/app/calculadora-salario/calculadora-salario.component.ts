@@ -13,7 +13,9 @@ export class CalculadoraSalarioComponent{
   afp: number = 0.00;
   isss: number = 0.00;
   salario_liquido: number = 0.00;
-  
+  //en base a esta variable se calcula si aplica o no al descuento de renta segun el MH
+  //formula es salario base-descuento afp-descuento isss
+  salario_nominal:number=this.salario-this.afp-this.isss
   //funcion para verificar el input si es numero o no
   isNumber(): boolean {
     const regex = /^\d+(\.\d{1,2})?$/;
@@ -32,12 +34,49 @@ export class CalculadoraSalarioComponent{
   roundToTwoDecimals(num: number): number {
     return Math.round((num + Number.EPSILON) * 100) / 100;
   }
+
+  //funcion para calculo de renta, devuelve un numero que debe ser asignado a la variable renta
+  calculoRentaMes():number{
+    if(this.salario_nominal>=472.01&&this.salario_nominal<=895.24){
+      return (((this.salario_nominal-472)*0.1)+17.67)
+    }else if(this.salario_nominal>=895.25&&this.salario_nominal<=2038.10){
+      return (((this.salario_nominal-895.24)*0.2)+60)
+    }else if(this.salario_nominal>=2038.11){
+      return (((this.salario_nominal-2038.10)*0.3)+288.57)
+    }else{
+      return 0.00
+    }
+  }
+  calculoRentaQuincena():number{
+    if(this.salario_nominal>=236.01&&this.salario_nominal<=447.62){
+      return (((this.salario_nominal-236)*0.1)+8.83)
+    }else if(this.salario_nominal>=447.63&&this.salario_nominal<=1019.05){
+      return (((this.salario_nominal-447.62)*0.2)+30)
+    }else if(this.salario_nominal>=1019.06){
+      return (((this.salario_nominal-1019.05)*0.3)+144.28)
+    }else{
+      return 0.00
+    }
+  }
+  calculoRentaSemanal():number{
+    if(this.salario_nominal>=118.01&&this.salario_nominal<=223.81){
+      return (((this.salario_nominal-118)*0.1)+4.42)
+    }else if(this.salario_nominal>=223.82&&this.salario_nominal<=509.52){
+      return (((this.salario_nominal-223.81)*0.2)+15)
+    }else if(this.salario_nominal>=509.53){
+      return (((this.salario_nominal-509.52)*0.3)+72.14)
+    }else{
+      return 0.00
+    }
+  }
+  
   //Funcion primaria para calcular los descuentos
   calcularDescuentos(){
     //uso la funcion para permitir el paso o no del valor y verificar si esta correcto
     if(this.handleInput()){
       //aca van las funciones de calculo, entra aca si el formato esta correcto
       console.log("Formato correcto")
+      
     }else{
       console.log("Formato incorrecto")
     }
