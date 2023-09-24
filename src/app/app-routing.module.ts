@@ -4,7 +4,7 @@ import { CalculadoraSalarioComponent } from './calculadora-salario/calculadora-s
 
 const routes: Routes = [
   {path:'calculadora-salario', component: CalculadoraSalarioComponent},
-  {path:'', redirectTo:'calculadora-salario',pathMatch:'full'},
+  {path:'', redirectTo:'calculadora',pathMatch:'full'},
 ];
 
 @NgModule({
