@@ -79,9 +79,13 @@ export class CalculadoraSalarioComponent{
     //uso la funcion para permitir el paso o no del valor y verificar si esta correcto
     if(this.handleInput()){
       //calculo el salario con los descuentos de afp y seguro para poder calcular la renta
+     
       this.calcularAfp();
+
       this.calcularISS();
+
       this.calcularSalarioLiquido();
+
       //formula es salario base-descuento afp-descuento isss
       this.salario_nominal=this.salario-this.afp-this.isss
       //aca van las funciones de calculo, entra aca si el formato esta correcto
