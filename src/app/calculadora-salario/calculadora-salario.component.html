@@ -1,18 +1,19 @@
-<mat-toolbar>
+<mat-toolbar color="primary">
     <span>Calculadora de Salario</span>
 </mat-toolbar>
 
 <mat-card>
     <mat-card-content>
-        Ingrese su salario y nosotros le devolveremos los descuentos que se realizarán
+        <p>Ingrese su salario y nosotros le devolveremos los descuentos que se realizarán</p>
         <form #loginForm="ngForm" class="example-form">
             <mat-form-field class="example-full-width">
                 <mat-label>Ingrese su salario</mat-label>
-                <input matInput placeholder="348.55" id="salario" name="salario" [(ngModel)]="salario" required>
+                <input matInput type="number" placeholder="348.55" id="salario" name="salario" [(ngModel)]="salario" required>
+                <mat-icon matSuffix>paid</mat-icon>
             </mat-form-field>
             <section>
                 <div class="example-button-row">
-                    <button id="calcular" mat-raised-button (click)="calcularDescuentos()">Calcular</button>
+                    <button color="primary" disabledRipple="false" id="calcular" mat-raised-button (click)="calcularDescuentos()">Calcular</button>
                 </div>
             </section>
         </form>
@@ -20,7 +21,7 @@
 </mat-card>
 <mat-card>
     <mat-card-content>
-        <mat-grid-list cols="4" rowHeight="45px">
+        <mat-grid-list cols="4" rowHeight="45px" [style.background]="'#ff80ab'">
             <mat-grid-tile>
                 <mat-grid-tile-header>Salario Base: ${{salario}}</mat-grid-tile-header>
             </mat-grid-tile>
