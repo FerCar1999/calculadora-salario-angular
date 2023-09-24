@@ -13,6 +13,9 @@ export class CalculadoraSalarioComponent{
   afp: number = 0.00;
   isss: number = 0.00;
   salario_liquido: number = 0.00;
+  //dependiendo del tipo de salario sera el tipo de calculo para la renta
+  //1=semanal, 2=quincenal, 3=mensual
+  tipoSalario:number=0
   //en base a esta variable se calcula si aplica o no al descuento de renta segun el MH
   //formula es salario base-descuento afp-descuento isss
   salario_nominal:number=this.salario-this.afp-this.isss
