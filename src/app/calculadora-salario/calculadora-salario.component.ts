@@ -79,6 +79,7 @@ export class CalculadoraSalarioComponent{
     //uso la funcion para permitir el paso o no del valor y verificar si esta correcto
     if(this.handleInput()){
       //calculo el salario con los descuentos de afp y seguro para poder calcular la renta
+      this.calcularAfp();
       //formula es salario base-descuento afp-descuento isss
       this.salario_nominal=this.salario-this.afp-this.isss
       //aca van las funciones de calculo, entra aca si el formato esta correcto
@@ -104,4 +105,17 @@ export class CalculadoraSalarioComponent{
     
   }
 
+  calcularAfp(){
+    if(this.handleInput()){
+    var resultado = this.roundToTwoDecimals(this.salario * 0.0725);
+    this.afp = resultado;
+      //return this.afp;
+    }else{
+      console.log("Formato incorrecto")
+    }
+  }
+
+  calcularISS(){
+
+  }
 }
