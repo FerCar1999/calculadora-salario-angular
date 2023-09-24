@@ -27,6 +27,11 @@ export class CalculadoraSalarioComponent{
       return false
     }
   }
+  /*funcion para rendodear decimales, recibe un numero y devuelve 
+  el mismo con dos decimales*/
+  roundToTwoDecimals(num: number): number {
+    return Math.round((num + Number.EPSILON) * 100) / 100;
+  }
   //Funcion primaria para calcular los descuentos
   calcularDescuentos(){
     //uso la funcion para permitir el paso o no del valor y verificar si esta correcto
@@ -36,6 +41,7 @@ export class CalculadoraSalarioComponent{
     }else{
       console.log("Formato incorrecto")
     }
+    
   }
 
 }
