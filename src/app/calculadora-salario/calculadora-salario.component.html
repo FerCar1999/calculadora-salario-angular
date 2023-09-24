@@ -7,7 +7,7 @@
         <p>Ingrese su salario y nosotros le devolveremos los descuentos que se realizarán</p>
         <form #loginForm="ngForm" class="example-form">
 
-            <mat-radio-group [(ngModel)]="tipoSalario">
+            <mat-radio-group [(ngModel)]="tipoSalario" name="tipoSalario">
                 <mat-label>Seleccione su tipo de salario</mat-label>
                 <mat-radio-button value="Semanal">Semanal</mat-radio-button>
                 <mat-radio-button value="Quincenal">Quincenal</mat-radio-button>

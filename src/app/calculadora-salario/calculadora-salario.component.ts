@@ -81,6 +81,7 @@ export class CalculadoraSalarioComponent{
       //calculo el salario con los descuentos de afp y seguro para poder calcular la renta
       this.calcularAfp();
       this.calcularISS();
+      this.calcularSalarioLiquido();
       //formula es salario base-descuento afp-descuento isss
       this.salario_nominal=this.salario-this.afp-this.isss
       //aca van las funciones de calculo, entra aca si el formato esta correcto
@@ -124,5 +125,10 @@ export class CalculadoraSalarioComponent{
       }else{
         console.log("Formato incorrecto")
       }
+  }
+
+  calcularSalarioLiquido(){
+    var resultado = (this.salario) - (this.isss+this.afp);
+    this.salario_liquido = this.roundToTwoDecimals(resultado);
   }
 }
