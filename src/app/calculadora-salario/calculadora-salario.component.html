@@ -1,0 +1,42 @@
+<mat-toolbar color="primary">
+    <span>Calculadora de Salario</span>
+</mat-toolbar>
+
+<mat-card>
+    <mat-card-content>
+        <p>Ingrese su salario y nosotros le devolveremos los descuentos que se realizarán</p>
+        <form #loginForm="ngForm" class="example-form">
+            <mat-form-field class="example-full-width">
+                <mat-label>Ingrese su salario</mat-label>
+                <input matInput type="number" placeholder="348.55" id="salario" name="salario" [(ngModel)]="salario" required>
+                <mat-icon matSuffix>paid</mat-icon>
+            </mat-form-field>
+            <section>
+                <div class="example-button-row">
+                    <button color="primary" disabledRipple="false" id="calcular" mat-raised-button (click)="calcularDescuentos()">Calcular</button>
+                </div>
+            </section>
+        </form>
+    </mat-card-content>
+</mat-card>
+<mat-card>
+    <mat-card-content>
+        <mat-grid-list cols="4" rowHeight="45px" [style.background]="'#ff80ab'">
+            <mat-grid-tile>
+                <mat-grid-tile-header>Salario Base: ${{salario}}</mat-grid-tile-header>
+            </mat-grid-tile>
+            <mat-grid-tile>
+                <mat-grid-tile-header>Descuento de Renta: ${{renta}}</mat-grid-tile-header>
+            </mat-grid-tile>
+            <mat-grid-tile>
+                <mat-grid-tile-header>Descuento AFP: ${{afp}}</mat-grid-tile-header>
+            </mat-grid-tile>
+            <mat-grid-tile>
+                <mat-grid-tile-header>Descuento ISSS: ${{isss}}</mat-grid-tile-header>
+            </mat-grid-tile>
+            <mat-grid-tile colspan="4">
+                <mat-grid-tile-header>Salario Liquido: ${{salario_liquido}}</mat-grid-tile-header>
+            </mat-grid-tile>
+        </mat-grid-list>
+    </mat-card-content>
+</mat-card>
