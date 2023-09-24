@@ -8,12 +8,34 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CalculadoraSalarioComponent{
   //Variable que guarda el valor del salario
-  salario: number|null = null;
-  renta: number|null = null;
-  afp: number|null = null;
-  isss: number|null = null;
-  salario_liquido: number|null = null;
+  salario: number = 0.00;
+  renta: number = 0.00;
+  afp: number = 0.00;
+  isss: number = 0.00;
+  salario_liquido: number = 0.00;
   
+  //funcion para verificar el input si es numero o no
+  isNumber(): boolean {
+    const regex = /^\d+(\.\d{1,2})?$/;
+    return regex.test(this.salario?.toString());
+  }
+  //verifico con una funcion si el valor ingresado esta correcto
+  handleInput() {
+    if (this.isNumber()) {
+      return true
+    } else {
+      return false
+    }
+  }
   //Funcion primaria para calcular los descuentos
-  calcularDescuentos(){}
+  calcularDescuentos(){
+    //uso la funcion para permitir el paso o no del valor y verificar si esta correcto
+    if(this.handleInput()){
+      //aca van las funciones de calculo, entra aca si el formato esta correcto
+      console.log("Formato correcto")
+    }else{
+      console.log("Formato incorrecto")
+    }
+  }
+
 }

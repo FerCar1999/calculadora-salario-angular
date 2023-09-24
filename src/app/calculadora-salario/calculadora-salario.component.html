@@ -8,7 +8,11 @@
         <form #loginForm="ngForm" class="example-form">
             <mat-form-field class="example-full-width">
                 <mat-label>Ingrese su salario</mat-label>
-                <input matInput type="number" placeholder="348.55" id="salario" name="salario" [(ngModel)]="salario" required>
+                <input matInput type="number" placeholder="348.55" id="salario" name="salario" [(ngModel)]="salario" pattern="^\d+(\.\d{1,2})?$" required>
+                <!--para verificar con regex el input del usuario en la vista-->
+                <div *ngIf="salario > 0 && !isNumber()">
+                    Formato invalido, solamente dos decimales
+                  </div>
                 <mat-icon matSuffix>paid</mat-icon>
             </mat-form-field>
             <section>
